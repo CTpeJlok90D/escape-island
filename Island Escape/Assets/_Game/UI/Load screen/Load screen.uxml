@@ -1,0 +1,5 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="root" style="width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.62); flex-direction: column-reverse; align-items: auto; padding-top: 2%; padding-right: 2%; padding-bottom: 2%; padding-left: 2%;">
+        <ui:Label text="Loading..." style="color: rgb(253, 253, 253); width: 105px; -unity-text-align: upper-right;" />
+    </ui:VisualElement>
+</ui:UXML>

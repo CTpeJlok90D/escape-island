@@ -1,0 +1,24 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Game/UI/Styles/default-input-field.uss?fileID=7433441132597879392&amp;guid=0ab56686b604b3d49af118e560be5d9f&amp;type=3#default-input-field" />
+    <ui:VisualElement name="root" style="width: 100%; height: 100%; flex-direction: row; align-items: flex-start; justify-content: center;">
+        <ui:VisualElement name="buttons-zone" style="flex-grow: 1; width: 15%; align-items: center; justify-content: center; height: 100%;">
+            <ui:Button text="Connect" name="open-connect-window-button" style="width: 80%;" />
+            <ui:Button text="Host" name="host-button" style="width: 80%;" />
+            <ui:Button text="Lobby" name="lobby-button" style="width: 80%; display: flex;" />
+            <ui:Button text="Settings" name="settings-button" style="width: 80%;" />
+            <ui:Button text="Leave lobby" name="leave-lobby-button" style="width: 80%; display: flex;" />
+            <ui:Button text="Exit" name="exit-button" style="width: 80%;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="windows-zone" style="flex-grow: 1; height: 100%; width: 85%;">
+            <ui:VisualElement name="lobby-winodow" style="flex-grow: 1; display: flex;" />
+            <ui:VisualElement name="settings-winodow" style="flex-grow: 1; display: flex;">
+                <ui:Label text="SETTINGS" style="color: rgb(255, 255, 255); font-size: 120px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="connect-winodow" style="flex-grow: 1; display: flex; margin-left: 15%; margin-top: 15%; margin-right: 15%; margin-bottom: 15%; align-items: flex-start; flex-direction: row; flex-wrap: wrap; justify-content: center;">
+                <ui:Label text="Join code" style="width: 20%;" />
+                <ui:TextField placeholder-text="XXXXXX" name="join-code-field" style="width: 30%;" />
+                <ui:Button text="Connect" name="connect-button" style="width: 50%;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
