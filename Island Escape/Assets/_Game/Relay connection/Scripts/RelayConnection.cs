@@ -1,5 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
+using R3;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Services.Authentication;
@@ -26,8 +27,9 @@ namespace Core.Connection
         }
         
         public event Action ConnectionStarted;
+        public event Action ConnectionFailed;
         public event Action Connected;
-        public ReactiveField<string> JoinCode { get; private set; } = new();
+        public ReactiveProperty<string> JoinCode { get; private set; } = new();
 
         public async UniTask CreateRelay()
         {
@@ -63,6 +65,7 @@ namespace Core.Connection
             catch (RelayServiceException e)
             {
                 Debug.LogException(e);
+                ConnectionFailed?.Invoke();
             }
         }
 
@@ -97,6 +100,7 @@ namespace Core.Connection
             catch (RelayServiceException e)
             {
                 Debug.LogException(e);
+                ConnectionFailed?.Invoke();
             }
         }
     }

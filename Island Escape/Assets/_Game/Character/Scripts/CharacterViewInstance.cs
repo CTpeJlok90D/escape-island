@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class CharacterViewInstance : MonoBehaviour
 {
-    public CharacterInstance LinkedCharacter { get; private set; } 
-    
-    public CharacterViewInstance Instantiate(CharacterInstance linkedCharacter, Transform parent = null)
+    public IContainsCharacter LinkedCharacter { get; private set; } 
+
+    public CharacterViewInstance Instantiate(IContainsCharacter linkedCharacter, Transform parent = null)
     {
         gameObject.SetActive(false);
         CharacterViewInstance result = Instantiate(this, parent);

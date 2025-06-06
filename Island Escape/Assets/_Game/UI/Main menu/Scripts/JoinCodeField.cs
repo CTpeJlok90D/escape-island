@@ -1,5 +1,5 @@
-using System;
 using Core.Connection;
+using R3;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,19 +13,10 @@ public class JoinCodeField : MonoBehaviour
     private void Awake()
     {
         _joinCodeTextField = _document.rootVisualElement.Q<TextField>(_joinCodeTextFieldName);
+        RelayConnection.Instance.JoinCode.Subscribe(_ => OnJoinCodeChange(RelayConnection.Instance.JoinCode.Value));
     }
 
-    private void OnEnable()
-    {
-        RelayConnection.Instance.JoinCode.Changed += OnJoinCodeChange;
-    }
-
-    private void OnDisable()
-    {
-        RelayConnection.Instance.JoinCode.Changed -= OnJoinCodeChange;
-    }
-
-    private void OnJoinCodeChange(string oldValue, string newValue)
+    private void OnJoinCodeChange(string newValue)
     {
         _joinCodeTextField.value = newValue;
     }

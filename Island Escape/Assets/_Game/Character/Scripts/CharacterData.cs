@@ -48,7 +48,6 @@ public struct CharacterData : INetworkSerializable
         
         int length = TraitsIDs.Length;
         serializer.SerializeValue(ref length);
-        Debug.Log(length);
 
         if (serializer.IsReader)
         {

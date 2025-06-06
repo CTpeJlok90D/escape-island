@@ -10,8 +10,7 @@ public class LocationConfigContainer : NetEntity<LocationConfigContainer>
     public override void Awake()
     {
         base.Awake();
-        
-        DontDestroyOnLoad(this);
+        NetworkObject.DestroyWithScene = false;
         LocationConfig = new NetVariable<LocationConfig>();
     }
 }

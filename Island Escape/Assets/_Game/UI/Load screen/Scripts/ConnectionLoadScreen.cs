@@ -11,12 +11,14 @@ public class ConnectionLoadScreen : MonoBehaviour
     {
         RelayConnection.Instance.ConnectionStarted += OnConnectionStart;
         RelayConnection.Instance.Connected += OnConnected;
+        RelayConnection.Instance.ConnectionFailed += OnConnected;
     }
 
     private void OnDisable()
     {
         RelayConnection.Instance.ConnectionStarted -= OnConnectionStart;
         RelayConnection.Instance.Connected -= OnConnected;
+        RelayConnection.Instance.ConnectionFailed -= OnConnected;
     }
 
     private void OnConnected()

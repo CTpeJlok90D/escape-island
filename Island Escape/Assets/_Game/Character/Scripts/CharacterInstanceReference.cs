@@ -1,0 +1,35 @@
+using System;
+using Core.Entities;
+using R3;
+using Unity.Netcode;
+using Unity.Netcode.Custom;
+using UnityEngine;
+
+public class CharacterInstanceReference : NetEntity<CharacterInstanceReference>, IContainsCharacter
+{
+    public NetBehaviourReference<CharacterInstance> CharacterInstance { get; private set; } = new();
+    public ReactiveProperty<CharacterData> Data => CharacterInstance.Reference.Data;
+
+    public CharacterInstanceReference Instantiate(CharacterInstance characterInstance, Vector3 position = default, Quaternion rotation = default)
+    {
+        if (NetworkManager.IsServer == false)
+        {
+            throw new NotServerException("Only server can spawn character instances.");
+        }
+        
+        if (characterInstance.IsSpawned == false)
+        {
+            throw new ArgumentException("character instance is not spawned");
+        }
+        
+        gameObject.SetActive(false);
+        CharacterInstanceReference instanceReference = Instantiate(this, position, rotation);
+        gameObject.SetActive(true);
+        
+        instanceReference.CharacterInstance = new(characterInstance);
+        instanceReference.gameObject.SetActive(true);
+        instanceReference.NetworkObject.SpawnWithOwnership(characterInstance.NetworkObject.OwnerClientId);
+        
+        return instanceReference;
+    }
+}

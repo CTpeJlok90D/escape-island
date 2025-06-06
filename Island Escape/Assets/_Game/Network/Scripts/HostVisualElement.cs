@@ -8,7 +8,7 @@ public class HostVisualElement : MonoBehaviour
     [SerializeField] private UIDocument _uiDocument;
     [SerializeField] private List<string> _elementNames;
 
-    private List<VisualElement> _visualElements;
+    private List<VisualElement> _visualElements = new();
     
     private void Start()
     {

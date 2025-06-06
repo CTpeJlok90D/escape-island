@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameBootstrap : MonoBehaviour
 {
     [SerializeField] private LocationConfig _startLocationConfig;
+    [SerializeField] private CharacterInstance _characterInstance_PREFAB;
     
     public void Launch()
     {
@@ -13,8 +14,18 @@ public class GameBootstrap : MonoBehaviour
         }
         
         _startLocationConfig.Seed = Random.Range(int.MinValue, int.MaxValue);
-        
+        CreatePlayersCharacters();
+
         LocationConfigContainer.Instance.LocationConfig.Value = _startLocationConfig;
         WorldStateSwitcher.Instance.SwitchState(WorldState.Exploring);
+    }
+
+    private void CreatePlayersCharacters()
+    {
+        foreach (CharacterByTraitsFabric playerFabric in CharacterByTraitsFabric.Instances)
+        {
+            CharacterData characterData = playerFabric.GeneratedCharacter.Value;
+            _characterInstance_PREFAB.Instantiate(characterData, playerFabric.OwnerClientId);
+        }
     }
 }

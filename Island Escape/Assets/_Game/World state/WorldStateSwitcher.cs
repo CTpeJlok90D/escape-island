@@ -15,7 +15,7 @@ public class WorldStateSwitcher : NetEntity<WorldStateSwitcher>
 
     public override void Awake()
     {
-        DontDestroyOnLoad(this);
+        NetworkObject.DestroyWithScene = false;
         WorldState = new NetVariable<WorldState>();
         base.Awake();
     }
@@ -35,11 +35,5 @@ public class WorldStateSwitcher : NetEntity<WorldStateSwitcher>
         WorldState.Value = state;
         
         NetworkManager.SceneManager.LoadScene(_scenesForStates[state], LoadSceneMode.Single);
-    }
-
-    public override void OnNetworkDespawn()
-    {
-        base.OnNetworkDespawn();
-        SceneManager.LoadScene(_mainMenuSceneName, LoadSceneMode.Single);
     }
 }

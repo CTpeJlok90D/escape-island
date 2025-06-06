@@ -1,5 +1,5 @@
-using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
+using System.Collections;
+using TNRD;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -7,25 +7,25 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class RandomView : MonoBehaviour
 {
     [SerializeField] private AssetReferenceGameObject[] _views;
-    [SerializeField] private CharacterInstance _characterInstance;
+    [SerializeField] private SerializableInterface<IContainsCharacter> _characterInstance;
     [SerializeField] private Transform _root;
 
-    private void Start()
+    private IEnumerator Start()
     {
-        _ = RandomizeCharacter();
-    }
-
-    private async Task RandomizeCharacter()
-    {
-        System.Random random = new System.Random(_characterInstance.Data.ViewSeed);
+        while (_characterInstance.Value.Data == null)
+        {
+            yield return null;
+        }
+        
+        System.Random random = new System.Random(_characterInstance.Value.Data.Value.ViewSeed);
         
         int viewIndex = random.Next(0, _views.Length);
         AssetReference viewAssetReference = _views[viewIndex];
         AsyncOperationHandle<GameObject> handle = viewAssetReference.LoadAssetAsync<GameObject>();
-
-        await handle.ToUniTask();
-        
-        CharacterViewInstance view = handle.Result.GetComponent<CharacterViewInstance>();
-        view.Instantiate(_characterInstance, _root);
+        handle.Completed += (h) =>
+        {
+            CharacterViewInstance view = h.Result.GetComponent<CharacterViewInstance>();
+            view.Instantiate(_characterInstance.Value, _root);
+        };
     }
 }
