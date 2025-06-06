@@ -27,7 +27,7 @@ namespace Core.Connection
         
         public event Action ConnectionStarted;
         public event Action Connected;
-        public string JoinCode { get; private set; }
+        public ReactiveField<string> JoinCode { get; private set; } = new();
 
         public async UniTask CreateRelay()
         {
@@ -43,7 +43,7 @@ namespace Core.Connection
                 
                 Allocation allocation = await RelayService.Instance.CreateAllocationAsync(4);
 
-                JoinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+                JoinCode.Value = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
                 
                 NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(
                     allocation.RelayServer.IpV4,
@@ -56,7 +56,7 @@ namespace Core.Connection
                 NetworkManager.Singleton.StartHost();
                 
                 Debug.Log($"Relay was created with join code: {JoinCode}. Already in clipboard");
-                GUIUtility.systemCopyBuffer = JoinCode;
+                GUIUtility.systemCopyBuffer = JoinCode.Value;
                 
                 Connected?.Invoke();
             }
@@ -78,7 +78,7 @@ namespace Core.Connection
             {
                 ConnectionStarted?.Invoke();
                 
-                JoinCode = joinCode;
+                JoinCode.Value = joinCode;
                 JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
                 
                 NetworkManager.Singleton.GetComponent<UnityTransport>().SetClientRelayData(

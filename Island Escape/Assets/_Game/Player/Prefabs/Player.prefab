@@ -106,7 +106,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9e33d5e80158acb428f79767623453db, type: 2}
   - {fileID: 11400000, guid: d1a325ec1d742f04c859795d0a87de47, type: 2}
   - {fileID: 11400000, guid: d989ab32083b1a742bd63963588d4fa8, type: 2}
-  - {fileID: 11400000, guid: 02f56f552373c744987f91198583c291, type: 2}
   - {fileID: 11400000, guid: 0ec2b3f47acc27e4b894daf01f638f57, type: 2}
   - {fileID: 11400000, guid: 33e9aac609bb0864f8e6da436c38bd0a, type: 2}
   - {fileID: 11400000, guid: b6f6ba722eb35514197f6b78d91797a0, type: 2}
@@ -115,8 +114,10 @@ MonoBehaviour:
     Skills: []
     BaseMoveSpeed: 3
     BaseLoadCapacity: 100
+    ViewSeed: 0
   <GeneratedCharacter>k__BackingField:
     TraitsIDs: []
     Skills: []
     BaseMoveSpeed: 0
     BaseLoadCapacity: 0
+    ViewSeed: 0

@@ -10,11 +10,25 @@
             <ui:Button text="Exit" name="exit-button" style="width: 80%;" />
         </ui:VisualElement>
         <ui:VisualElement name="windows-zone" style="flex-grow: 1; height: 100%; width: 85%;">
-            <ui:VisualElement name="lobby-winodow" style="flex-grow: 1; display: flex;" />
-            <ui:VisualElement name="settings-winodow" style="flex-grow: 1; display: flex;">
+            <ui:VisualElement name="lobby-winodow" class="my-grid" style="flex-grow: 1; display: flex; padding-top: 12%; padding-right: 12%; padding-bottom: 12%; padding-left: 12%; width: 100%; height: 100%; position: absolute;">
+                <ui:VisualElement name="lobby-window-root" class="my-grid" style="flex-grow: 1; background-color: rgb(128, 128, 128);">
+                    <ui:Label text="Traits:" name="traits" />
+                    <ui:Label text="Skills:" name="skills" />
+                    <ui:Label text="Move speed:" name="move-speed-label" />
+                    <ui:Label text="Load capacity:" name="load-capacity-label" />
+                    <ui:Label text="View seed:" name="view-seed-label" style="-unity-text-align: upper-left;" />
+                    <ui:Button text="Regenerate" name="regenerate-character-button" style="-unity-text-align: lower-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="join-code-frame" style="flex-direction: row; width: 100%; background-color: rgb(128, 128, 128); align-content: stretch; justify-content: center; align-items: center;">
+                    <ui:Label text="Join code:" name="join-code-label" style="width: 13%; -unity-text-align: middle-left; white-space: pre;" />
+                    <ui:TextField placeholder-text="XXXXXX" readonly="true" name="join-code-read-only-field" style="width: 85%; height: 100%;" />
+                </ui:VisualElement>
+                <ui:Button text="Start game" name="start-game-button" />
+            </ui:VisualElement>
+            <ui:VisualElement name="settings-winodow" style="flex-grow: 1; display: flex; width: 100%; height: 100%; position: absolute;">
                 <ui:Label text="SETTINGS" style="color: rgb(255, 255, 255); font-size: 120px;" />
             </ui:VisualElement>
-            <ui:VisualElement name="connect-winodow" style="flex-grow: 1; display: flex; margin-left: 15%; margin-top: 15%; margin-right: 15%; margin-bottom: 15%; align-items: flex-start; flex-direction: row; flex-wrap: wrap; justify-content: center;">
+            <ui:VisualElement name="connect-winodow" style="flex-grow: 1; display: flex; align-items: center; flex-direction: row; flex-wrap: wrap; justify-content: center; width: 100%; height: 100%; padding-top: 10%; padding-right: 10%; padding-bottom: 10%; padding-left: 10%; position: absolute; align-self: center; align-content: center;">
                 <ui:Label text="Join code" style="width: 20%;" />
                 <ui:TextField placeholder-text="XXXXXX" name="join-code-field" style="width: 30%;" />
                 <ui:Button text="Connect" name="connect-button" style="width: 50%;" />

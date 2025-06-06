@@ -24,6 +24,11 @@ public sealed class ConnectedVisualElements : MonoBehaviour
 
     private void UpdateVisibility()
     {
+        if (NetworkManager.Singleton == null)
+        {
+            return;
+        }
+        
         foreach (VisualElement element in _visualElements)
         {
             if (_mode is Mode.HideOnDisconnect)

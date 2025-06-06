@@ -21,8 +21,6 @@ public class Tabs : MonoBehaviour
             
             linkedTab.style.visibility = Visibility.Hidden;
             _buttonAndLinkedTabs.Add(button, linkedTab);
-
-            Debug.Log($"{button.name} and {linkedTab.name}");
             
             if (button == null)
             {

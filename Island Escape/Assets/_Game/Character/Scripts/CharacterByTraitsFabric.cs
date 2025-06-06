@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Entities;
+using Unity.Netcode;
+using Unity.Netcode.Custom;
 using UnityEngine;
 
 public class CharacterByTraitsFabric : NetEntity<CharacterByTraitsFabric>
@@ -13,16 +16,27 @@ public class CharacterByTraitsFabric : NetEntity<CharacterByTraitsFabric>
         BaseMoveSpeed = 3,
     };
     
-    [field: SerializeField] public CharacterData GeneratedCharacter { get; private set; }
-    
+    [field: SerializeField] public NetVariable<CharacterData> GeneratedCharacter { get; private set; }
+
+    public override void Awake()
+    {
+        base.Awake();
+
+        GeneratedCharacter = new NetVariable<CharacterData>(default, NetworkVariableReadPermission.Everyone,
+            NetworkVariableWritePermission.Owner);
+    }
+
     private void Start()
     {
-        RegenerateCharacter();
+        if (IsOwner)
+        {
+            RegenerateCharacter();
+        }
     }
 
     public void RegenerateCharacter()
     {
-        GeneratedCharacter = GenerateCharacter();
+        GeneratedCharacter.Value = GenerateCharacter();
     }
 
     public CharacterData GenerateCharacter()
@@ -34,6 +48,7 @@ public class CharacterByTraitsFabric : NetEntity<CharacterByTraitsFabric>
         data.TraitsIDs = traits.Select(x => x.ID).ToArray();
         data.BaseLoadCapacity += traits.Sum(x => x.LoadCapacityImpact);
         data.BaseMoveSpeed += traits.Sum(x => x.MoveSpeedImpact);
+        data.ViewSeed = Guid.NewGuid().GetHashCode();
             
         List<Skill> skillsToAdd = new();
         
@@ -69,6 +84,7 @@ public class CharacterByTraitsFabric : NetEntity<CharacterByTraitsFabric>
             traits.Add(trait);
 
             availableTraits.RemoveAll(x => trait.ConflictTraitsIDs.Contains(x.Trait.ID));
+            availableTraits.RemoveAll(x => x.Trait.ConflictTraitsIDs.Contains(trait.ID));
         }
         
         return traits.ToArray();
