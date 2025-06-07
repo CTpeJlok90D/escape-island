@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_GUID: e06be77a258144745b89b67bdd5c3dac
+  m_SerializeEntries:
+  - m_GUID: 3ef454cc035adc1489a9aec1f5a10d55
+    m_Address: Assets/_Game/Character/Models/Prefabs/Female 2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 59b9fc048e4b5184bbd6bb8efc356091
+    m_Address: Assets/_Game/Character/Models/Prefabs/Female 3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5da73550c90a266498e0fcd9c6437148
+    m_Address: Assets/_Game/Character/Models/Prefabs/Male 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 619f88d1e87438a43a166f80364f0fd4
+    m_Address: Assets/_Game/Character/Models/Prefabs/Male 3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 730000931cae1454c8083362445e8f75
+    m_Address: Assets/_Game/Character/Models/Prefabs/Male 2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96c1702b56fa5a7488457a6a515ac58e
+    m_Address: Assets/_Game/Character/Models/Prefabs/Male 4.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bda9b0031f8f38e4e98e7780f1fea9b8
+    m_Address: Assets/_Game/Character/Models/Prefabs/Female 4.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fcabbf6dce97b4143895e121697800f1
+    m_Address: Assets/_Game/Character/Models/Prefabs/Female 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9733f079384bf6d4fadf934f00ddfb79, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e9052ccbd94c494459430133568421e8, type: 2}
+    - {fileID: 11400000, guid: 58b6289e9cda3f649b2e9a3a0c728fa1, type: 2}

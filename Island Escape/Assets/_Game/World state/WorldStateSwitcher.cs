@@ -20,6 +20,23 @@ public class WorldStateSwitcher : NetEntity<WorldStateSwitcher>
         base.Awake();
     }
 
+    private void Start()
+    {
+        NetworkManager.OnClientStopped += OnClientStop;
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        NetworkManager.OnClientStopped -= OnClientStop;
+    }
+
+    private void OnClientStop(bool obj) => ReturnToMainMenu();
+    private void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(_mainMenuSceneName);
+    }
+
     public void SwitchState(WorldState state)
     {
         if (IsServer == false)

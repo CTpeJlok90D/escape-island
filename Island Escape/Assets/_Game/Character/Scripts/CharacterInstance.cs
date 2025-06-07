@@ -1,11 +1,10 @@
 using Core.Entities;
-using R3;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 
 public class CharacterInstance : NetEntity<CharacterInstance>, IContainsCharacter
 {
-    public ReactiveProperty<CharacterData> Data { get; private set; } = new();
+    public NetVariable<CharacterData> Data { get; private set; } = new();
     public NetVariable<bool> IsBot { get; private set; } = new();
 
     public CharacterInstance Instantiate(CharacterData data, ulong ownerShip, bool isBot = false)
@@ -19,7 +18,7 @@ public class CharacterInstance : NetEntity<CharacterInstance>, IContainsCharacte
         CharacterInstance characterInstance = Instantiate(this);
         gameObject.SetActive(true);
         
-        characterInstance.Data.Value = data;
+        characterInstance.Data = new(data);
         characterInstance.IsBot = new(isBot);
         characterInstance.gameObject.SetActive(true);
         characterInstance.NetworkObject.SpawnWithOwnership(ownerShip, false);

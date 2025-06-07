@@ -8,7 +8,7 @@ using UnityEngine;
 public class CharacterInstanceReference : NetEntity<CharacterInstanceReference>, IContainsCharacter
 {
     public NetBehaviourReference<CharacterInstance> CharacterInstance { get; private set; } = new();
-    public ReactiveProperty<CharacterData> Data => CharacterInstance.Reference.Data;
+    public NetVariable<CharacterData> Data => CharacterInstance.Reference.Data;
 
     public CharacterInstanceReference Instantiate(CharacterInstance characterInstance, Vector3 position = default, Quaternion rotation = default)
     {
