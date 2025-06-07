@@ -1396,6 +1396,9 @@ GameObject:
   - component: {fileID: 7706473263717844791}
   - component: {fileID: 7706473263708530901}
   - component: {fileID: -7751517303892179668}
+  - component: {fileID: 700908293188177865}
+  - component: {fileID: 7475631485650319829}
+  - component: {fileID: -5552256253071726043}
   m_Layer: 0
   m_Name: Female 4
   m_TagString: Untagged
@@ -1436,7 +1439,7 @@ Animator:
   m_GameObject: {fileID: 7706473263718013719}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d9979e9ec1784f8418ec3118f7edb3b2, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fe6297752e9c4d44c844c6c9c99b2218, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1460,6 +1463,107 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfdfcfa862c44618a949aac5477c63db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &700908293188177865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7706473263718013719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f88b30baa76e044ab0480ee30957c09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterController: {fileID: -7751517303892179668}
+  _animator: {fileID: 7706473263708530901}
+  _zMovementParametrName: Z Movement
+  _xMovementParametrName: X Movement
+  _moveSpeedParametrName: Move speed
+--- !u!114 &7475631485650319829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7706473263718013719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6214e39dcd0a44dbef27e7c4608c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defualtSound: {fileID: 6418180475301049370, guid: f1fbc8949482ee54996b4dcc272bb78d, type: 2}
+  _source_PREFAB: {fileID: 6761986489651975449, guid: 9c11c1a6b21e5194d972319e164fdb43, type: 3}
+  _characterViewInstance: {fileID: -7751517303892179668}
+  _volumePerVelocity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _distancePerVelocity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _muteTime: 0.25
+--- !u!114 &-5552256253071726043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7706473263718013719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b34d113e25e85468ba576bf5a0ea75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ikBoneRight: 0
+  _ikBoneLeft: 1
+  _animator: {fileID: 7706473263708530901}
+  _rayCastMask:
+    serializedVersion: 2
+    m_Bits: 1
+  _maxDistanceToGround: 0.1
+  _footOffcet: {x: 0, y: 0, z: 0}
 --- !u!1 &7706473263718013721
 GameObject:
   m_ObjectHideFlags: 0

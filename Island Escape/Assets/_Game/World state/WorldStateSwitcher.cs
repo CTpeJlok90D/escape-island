@@ -28,7 +28,10 @@ public class WorldStateSwitcher : NetEntity<WorldStateSwitcher>
     public override void OnDestroy()
     {
         base.OnDestroy();
-        NetworkManager.OnClientStopped -= OnClientStop;
+        if (NetworkManager != null)
+        {
+            NetworkManager.OnClientStopped -= OnClientStop;
+        }
     }
 
     private void OnClientStop(bool obj) => ReturnToMainMenu();

@@ -11,6 +11,7 @@ public class CharacterMovement : NetworkBehaviour
 
     private float _minXAngle = 10;
     private float _maxXAngle = 170;
+    private float _acceseleration = 20;
     
     public NetVariable<Vector2> MoveDirection { get; private set; }
     public NetVariable<Vector3> Rotation { get; private set; }
@@ -38,7 +39,10 @@ public class CharacterMovement : NetworkBehaviour
         rotation.x = Mathf.Clamp(rotation.x, _minXAngle, _maxXAngle);
         Rotation.Value = rotation;
         
-        _characterRigidbody.SetLinearVelocity(moveResult*MoveSpeed*3.5f);
+        Vector3 currentVelocity = _characterRigidbody.GetLinearVelocity();
+        Vector3 velocity = Vector3.MoveTowards(currentVelocity, moveResult * MoveSpeed * 2.5f, Time.deltaTime * _acceseleration);
+        
+        _characterRigidbody.SetLinearVelocity(velocity);
         _characterRigidbody.transform.eulerAngles = new Vector3(0, rotation.y, 0);
     }
 }
