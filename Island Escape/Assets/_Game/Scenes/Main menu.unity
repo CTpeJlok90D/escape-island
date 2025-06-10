@@ -404,7 +404,6 @@ MonoBehaviour:
     LocationType: 0
     Seed: 0
   _characterInstance_PREFAB: {fileID: 131421499921029939, guid: b15c30c3e03b3274688e4be9498e4e04, type: 3}
-  _launchDelay: 2
 --- !u!4 &391663061
 Transform:
   m_ObjectHideFlags: 0
@@ -1238,6 +1237,7 @@ MonoBehaviour:
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 4a761ee305b1cd44f94ab049138acf6b, type: 2}
+      - {fileID: 11400000, guid: 05392a6ec038f0545b53d616aeaa65da, type: 2}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
