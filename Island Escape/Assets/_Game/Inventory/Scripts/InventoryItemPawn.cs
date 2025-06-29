@@ -3,12 +3,13 @@ using Unity.Netcode.Custom;
 using UnityEngine;
 
 [Icon("Assets/_Game/Inventory/Editor/icons8-flashlight-48.png")]
-public class InventoryItemPawn : NetEntity<InventoryItemPawn>, IContainsInventoryItemData
+public class InventoryItemPawn : NetEntity<InventoryItemPawn>, IContainsInventoryItemData, IContainsInventoryItemInstance
 {
     [field: SerializeField] private InventoryItemInstance _instanceToSpawn;
     public NetBehaviourReference<InventoryItemInstance> Reference { get; private set; }
 
-    public InventoryItemData Data => Reference.Reference.Data;
+    public InventoryItemData Data => InventoryItemInstanceReference.Data;
+    public InventoryItemInstance InventoryItemInstanceReference => Reference.Reference;
 
     private bool _isNewInstance = true;
     

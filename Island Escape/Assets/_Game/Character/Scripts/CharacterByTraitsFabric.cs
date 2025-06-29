@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Entities;
+using Core.Players;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
 
+[RequireComponent(typeof(Player))]
 public class CharacterByTraitsFabric : NetEntity<CharacterByTraitsFabric>
 {
     [SerializeField] private int _traitMaxWight = 100;
@@ -18,10 +20,14 @@ public class CharacterByTraitsFabric : NetEntity<CharacterByTraitsFabric>
     
     [field: SerializeField] public NetVariable<CharacterData> GeneratedCharacter { get; private set; }
 
+    public Player LinkedPlayer { get; private set; }
+    
     public override void Awake()
     {
         base.Awake();
 
+        LinkedPlayer = GetComponent<Player>();
+        
         GeneratedCharacter = new NetVariable<CharacterData>(default, NetworkVariableReadPermission.Everyone,
             NetworkVariableWritePermission.Owner);
     }

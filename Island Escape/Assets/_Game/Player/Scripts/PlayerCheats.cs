@@ -12,8 +12,7 @@ namespace Core.Players
 
         private void ChangeNickname(string newNickname)
         {
-            NicknameContainer nicknameContainer = Player.Local.GetComponent<NicknameContainer>();
-            nicknameContainer.Value = newNickname;
+            Player.Local.Nickname = newNickname;
 
             Debug.Log($"Nickname was set to {newNickname}");
         }

@@ -1,3 +1,4 @@
+using Core.Players;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -24,8 +25,9 @@ public class GameBootstrap : MonoBehaviour
     {
         foreach (CharacterByTraitsFabric playerFabric in CharacterByTraitsFabric.Instances)
         {
+            Player player = playerFabric.LinkedPlayer;
             CharacterData characterData = playerFabric.GeneratedCharacter.Value;
-            _characterInstance_PREFAB.Instantiate(characterData, playerFabric.OwnerClientId);
+            player.LinkedCharacter.Reference = _characterInstance_PREFAB.Instantiate(characterData, playerFabric.OwnerClientId);
         }
     }
 }

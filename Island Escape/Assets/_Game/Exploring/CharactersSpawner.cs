@@ -9,7 +9,7 @@ public class CharactersSpawner : MonoBehaviour
     
     private void Start()
     {
-        if (NetworkManager.Singleton.IsServer == false)
+        if (NetworkManager.Singleton == null || NetworkManager.Singleton.IsServer == false)
         {
             return;
         }

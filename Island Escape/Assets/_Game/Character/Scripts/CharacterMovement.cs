@@ -32,7 +32,7 @@ public class CharacterMovement : NetworkBehaviour
         }
         
         Vector3 moveResult = MoveDirection.Value;
-        moveResult = new Vector3(moveResult.x, 0, moveResult.y);
+        moveResult = new Vector3(moveResult.x, 0, moveResult.y) + Physics.gravity;
         moveResult = _characterRigidbody.transform.TransformDirection(moveResult);
         
         Vector3 rotation = new Vector3(Rotation.Value.x, Rotation.Value.y, _characterRigidbody.transform.eulerAngles.z);

@@ -1,14 +1,14 @@
 using System;
 using Core.Entities;
-using R3;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
 
-public class CharacterInstanceReference : NetEntity<CharacterInstanceReference>, IContainsCharacter
+public class CharacterInstanceReference : NetEntity<CharacterInstanceReference>, IContainsCharacter, IContainsCharacterInstance
 {
-    public NetBehaviourReference<CharacterInstance> CharacterInstance { get; private set; } = new();
-    public NetVariable<CharacterData> Data => CharacterInstance.Reference.Data;
+    public NetBehaviourReference<CharacterInstance> InstanceReference { get; private set; } = new();
+    public NetVariable<CharacterData> Data => InstanceReference.Reference.Data;
+    public CharacterInstance CharacterInstance => InstanceReference.Reference;
 
     public CharacterInstanceReference Instantiate(CharacterInstance characterInstance, Vector3 position = default, Quaternion rotation = default)
     {
@@ -26,7 +26,7 @@ public class CharacterInstanceReference : NetEntity<CharacterInstanceReference>,
         CharacterInstanceReference instanceReference = Instantiate(this, position, rotation);
         gameObject.SetActive(true);
         
-        instanceReference.CharacterInstance = new(characterInstance);
+        instanceReference.InstanceReference = new(characterInstance);
         instanceReference.gameObject.SetActive(true);
         instanceReference.NetworkObject.SpawnWithOwnership(characterInstance.NetworkObject.OwnerClientId);
         

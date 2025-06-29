@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 4220951800396575286}
   - component: {fileID: 7153449940760902050}
   - component: {fileID: 2957234282177125564}
+  - component: {fileID: 2702282155770099181}
+  - component: {fileID: 1002130465840650939}
   m_Layer: 0
   m_Name: Item 2 pawn
   m_TagString: Untagged
@@ -232,3 +234,28 @@ MonoBehaviour:
   UseRigidBodyForMotion: 1
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
+--- !u!114 &2702282155770099181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3310616583087611284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacb8028b7234b843b088b61d5c7990b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+--- !u!114 &1002130465840650939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3310616583087611284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625741362b51fb340a784b3bfd79e09d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

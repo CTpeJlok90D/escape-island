@@ -496,6 +496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8171044829279640438}
   - component: {fileID: 1413465901721629208}
+  - component: {fileID: 4807234550749573714}
   m_Layer: 0
   m_Name: Player control
   m_TagString: Untagged
@@ -533,6 +534,22 @@ MonoBehaviour:
   _characterMovement: {fileID: 725780987519911875}
   _moveAction: {fileID: -1680190386980627800, guid: 59f3e3ca93c9f6041bfe9a85a85d4ae2, type: 3}
   _rotateAction: {fileID: -5630151704836100654, guid: 59f3e3ca93c9f6041bfe9a85a85d4ae2, type: 3}
+--- !u!114 &4807234550749573714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022597580156655613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea9f0be3b2feda44b1af89dc950d4f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _root: {fileID: 853131249479730110}
+  _camera: {fileID: 9208917268048841702}
+  _interactionActionReference: {fileID: 1781555164194001046, guid: 59f3e3ca93c9f6041bfe9a85a85d4ae2, type: 3}
+  _interactionDistance: 1.7
 --- !u!1 &2460451678774685438
 GameObject:
   m_ObjectHideFlags: 0

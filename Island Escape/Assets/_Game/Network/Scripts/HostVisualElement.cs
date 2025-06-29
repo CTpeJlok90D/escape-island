@@ -25,6 +25,11 @@ public class HostVisualElement : MonoBehaviour
     {
         foreach (VisualElement element in _visualElements)
         {
+            if (element == null)
+            {
+                return;
+            }
+            
             element.style.display = NetworkManager.Singleton.IsHost ? DisplayStyle.Flex : DisplayStyle.None;
         }
     }

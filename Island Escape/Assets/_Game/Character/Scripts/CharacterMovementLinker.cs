@@ -36,7 +36,7 @@ public class CharacterMovementLinker : MonoBehaviour
         
         Vector3 animationVelocity = new(_animator.GetFloat(_xMovementParametrName), 0, _animator.GetFloat(_zMovementParametrName));
         Vector3 smoothedVelocity = Vector3.MoveTowards(animationVelocity, localVelocity, Time.deltaTime * 20);
-        
+
         _animator.SetFloat(_zMovementParametrName, smoothedVelocity.z);
         _animator.SetFloat(_xMovementParametrName, smoothedVelocity.x);
         _animator.SetFloat(_moveSpeedParametrName, smoothedVelocity.magnitude);
