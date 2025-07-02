@@ -1946,7 +1946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f88b30baa76e044ab0480ee30957c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterController: {fileID: -4020190658330494268}
+  _characterInstance: {fileID: -4020190658330494268}
   _animator: {fileID: 6103262681906531842}
   _zMovementParametrName: Z Movement
   _xMovementParametrName: X Movement

@@ -15,7 +15,7 @@ public class FootstepSoundMaker : MonoBehaviour
     private float _defualtMaxDistance;
     private float _defualtMinDistance;
     private float _defualtVolume;
-    private Rigidbody _characterRigidbody;
+    private IHaveVelocity _velocityContainer;
     private AudioSource _sourceInstance;
 
     private void Awake()
@@ -35,7 +35,7 @@ public class FootstepSoundMaker : MonoBehaviour
             return;
         }
     
-        _characterRigidbody = characterPawn.GetComponent<Rigidbody>();
+        _velocityContainer = characterPawn.GetComponent<IHaveVelocity>();
     }
 
     public void OnFootstep()
@@ -45,7 +45,7 @@ public class FootstepSoundMaker : MonoBehaviour
             return;
         }
         
-        float moveSpeed = _characterRigidbody.linearVelocity.magnitude;
+        float moveSpeed = _velocityContainer.Velocity.magnitude;
         float distance = _volumePerVelocity.Evaluate(moveSpeed);
         float volume = _distancePerVelocity.Evaluate(moveSpeed);
 

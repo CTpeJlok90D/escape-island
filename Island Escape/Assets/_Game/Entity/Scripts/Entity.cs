@@ -3,13 +3,14 @@ using UnityEngine;
 
 namespace Core.Entities
 {
+    [DefaultExecutionOrder(-1)]
     public class Entity<T> : MonoBehaviour where T : Entity<T>
     {
         private static List<T> _instances = new();
         
         public static IReadOnlyList<T> Instances
         {
-            get { return _instances; }
+            get { return _instances.ToArray(); }
         }
 
         protected virtual void OnEnable()

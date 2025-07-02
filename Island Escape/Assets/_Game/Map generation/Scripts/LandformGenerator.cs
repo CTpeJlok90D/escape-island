@@ -2,47 +2,24 @@ using UnityEngine;
 
 public class LandformGenerator
 {
-    private const float NoiseScale = 0.01f;
-    private const int LandformScale = 10;
-    private readonly Vector2Int _size;
-    private readonly Vector2Int _offset;
-    private readonly int _seed;
-    private readonly int _defaultOffset;
+    private readonly LandformGeneratorConfiguration _configuration;
+
+    private System.Random _random;
     
-    public LandformGenerator(Vector2Int size, int seed = -1)
+    public Vector2Int Size => _configuration.Size;
+    
+    public LandformGenerator(LandformGeneratorConfiguration configuration)
     {
-        _size = size;
-        _seed = seed;
-
-        if (_seed == -1)
-        {
-            _seed = Random.Range(int.MinValue, int.MaxValue);
-        }
-
-        System.Random random = new(_seed);
-        _offset = new Vector2Int()
-        {
-            x = random.Next(0, int.MaxValue),
-            y = random.Next(0, int.MaxValue)
-        };
+        _configuration = configuration; 
+        
+        _random = new(_configuration.Seed);
     }
     
     public Landform Generate()
     {
-        int[,] landform = new int[_size.x, _size.y];
-
-        string result = "";
+        float[,] landform = new float[Size.x, Size.y];
+        Vector2Int[] positionsToGenerate = new Vector2Int[Size.x * Size.y];
         
-        for (int x = 0; x < _size.x; x++)
-        {
-            for (int y = 0; y < _size.y; y++)
-            {
-                float noiseHeight = Mathf.PerlinNoise((x + _offset.x) * NoiseScale, (y + _offset.y) * NoiseScale);
-                landform[x,y] = (int)(noiseHeight * LandformScale) - _defaultOffset;
-            }
-
-            result += "\n";
-        }
         
         return new Landform(landform);
     }

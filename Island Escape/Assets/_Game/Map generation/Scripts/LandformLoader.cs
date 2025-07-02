@@ -1,20 +1,28 @@
-using System.Collections.Generic;
+using System;
+using Cysharp.Threading.Tasks;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+#if UNITY_EDITOR 
+using UnityEditor;
+using Progress = UnityEditor.Progress;
+#endif
+
 namespace Core
 {
     public class LandformLoader : NetworkBehaviour
     {
-        [SerializeField] private GameObject _landformPart;
-        [SerializeField] private Vector2Int _size = new (100, 100);
-        [SerializeField] private Transform _generationRoot;
+        [SerializeField] private Terrain _terrain;
+        [SerializeField] private LandformGeneratorConfiguration _configuration;
 
         private NetVariable<int> _seed;
-
-        private List<GameObject> _generated = new();
+        public bool IsInProgress { get; private set; } 
+        
+#if UNITY_EDITOR
+        private int _processId;
+#endif
         
         private void Awake()
         {
@@ -23,34 +31,66 @@ namespace Core
 
         private void Start()
         {
-            GenerateLandform(_seed.Value);
+            _ = GenerateLandform(_seed.Value);
         }
 
-        private void GenerateLandform(int seed)
+        private async UniTask GenerateLandform(int seed)
         {
-            LandformGenerator generator = new(_size, seed);
+            if (IsInProgress)
+            {
+                throw new InvalidOperationException("Generation is already in progress");
+            }
+            
+            IsInProgress = true;
+#if UNITY_EDITOR
+            _processId = Progress.Start("Generating map");
+#endif
+            
+            TerrainData terrainData = Instantiate(_terrain.terrainData);
+            int resolution = terrainData.heightmapResolution;
+
+            _configuration = new()
+            {
+                Size = new(terrainData.heightmapResolution, terrainData.heightmapResolution),
+                Seed = seed,
+            };
+            LandformGenerator generator = new(_configuration);
             Landform landform = generator.Generate();
 
-            for (int x = 0; x < _size.x; x++)
+            float[,] heights = new float[resolution, resolution];
+            
+            for (int x = 0; x < resolution; x++)
             {
-                for (int y = 0; y < _size.y; y++)
+                for (int y = 0; y < resolution; y++)
                 {
-                    int height = landform.Values[x, y];
-                    Vector3 position = new Vector3(x - _size.x, height, y - _size.x);
-
-                    GameObject instance = Instantiate(_landformPart, position, Quaternion.identity);
-                    instance.transform.SetParent(_generationRoot);
-                    _generated.Add(instance);
+                    float height = landform.Values[x, y] / _configuration.MaxHeight;
+                    heights[x, y] = height;
                 }
+                
+                await UniTask.NextFrame();
+#if UNITY_EDITOR
+                Progress.Report(_processId, (float)x/resolution);
+#endif
             }
+            
+            terrainData.SetHeights(0, 0, heights);
+            _terrain.terrainData = terrainData;
+            
+#if UNITY_EDITOR
+            Progress.Finish(_processId);
+#endif
+            IsInProgress = false;
         }
 
-        public void DestroyGenerated()
+        public override void OnDestroy()
         {
-            foreach (GameObject gameObject in _generated)
+            base.OnDestroy();
+#if UNITY_EDITOR
+            if (Progress.Exists(_processId))
             {
-                Destroy(gameObject);
+                Progress.Finish(_processId);
             }
+#endif
         }
 
         [ContextMenu("Regenerate")]
@@ -59,8 +99,7 @@ namespace Core
             if (NetworkManager.Singleton == null)
             {
                 int seed = Random.Range(int.MinValue, int.MaxValue);
-                DestroyGenerated();
-                GenerateLandform(seed);
+                _ = GenerateLandform(seed);
 
                 return;
             }
@@ -78,8 +117,29 @@ namespace Core
         [Rpc(SendTo.Everyone)]
         private void Regenerate_RPC(int seed)
         {
-            DestroyGenerated();
-            GenerateLandform(seed);
+            _ = GenerateLandform(seed);
         }
+        
+#if UNITY_EDITOR
+        [CustomEditor(typeof(LandformLoader))]
+        private class CEditor : Editor
+        {
+            public override void OnInspectorGUI()
+            {
+                DrawDefaultInspector();
+
+                if (Application.IsPlaying(this) == false)
+                {
+                    return;
+                }
+                
+                LandformLoader loader = (LandformLoader)target;
+                if (GUILayout.Button("Regenerate"))
+                {
+                    loader.Regenerate();
+                }
+            }
+        }
+#endif
     }
 }

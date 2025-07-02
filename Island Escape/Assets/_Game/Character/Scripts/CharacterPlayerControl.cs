@@ -19,7 +19,7 @@ public class CharacterPlayerControl : MonoBehaviour
         
         rotationInput = new Vector2(-rotationInput.y, rotationInput.x);
         
-        _characterMovement.MoveDirection.Value = new Vector2(moveInput.x, moveInput.y);
-        _characterMovement.Rotation.Value += (Vector3)rotationInput;
+        _characterMovement.MoveDirectionNet.Value = new Vector2(moveInput.x, moveInput.y);
+        _characterMovement.RotationNet.Value += (Vector3)rotationInput;
     }
 }

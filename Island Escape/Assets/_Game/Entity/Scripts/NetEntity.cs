@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Core.Entities
 {
+    [DefaultExecutionOrder(-1)]
     public abstract class NetEntity<T> : NetworkBehaviour where T : NetEntity<T>
     {
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]

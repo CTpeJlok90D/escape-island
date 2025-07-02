@@ -15,7 +15,7 @@
       "hash": "a22299e7e94eaa13ac17b326e0de8f2d3afa9e46"
     },
     "com.unity.addressables": {
-      "version": "2.5.0",
+      "version": "2.6.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -31,7 +31,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
-      "version": "1.8.21",
+      "version": "1.8.23",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -60,7 +60,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.dedicated-server": {
-      "version": "1.4.2",
+      "version": "1.5.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -132,7 +132,7 @@
       }
     },
     "com.unity.multiplayer.playmode": {
-      "version": "1.4.2",
+      "version": "1.5.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -141,7 +141,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.multiplayer.tools": {
-      "version": "2.2.3",
+      "version": "2.2.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {

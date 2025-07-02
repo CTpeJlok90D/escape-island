@@ -638,11 +638,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f88b30baa76e044ab0480ee30957c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterController: {fileID: 8109229852809679596}
+  _characterInstance: {fileID: 8109229852809679596}
   _animator: {fileID: 1577362923997759828}
   _zMovementParametrName: Z Movement
   _xMovementParametrName: X Movement
   _moveSpeedParametrName: Move speed
+  _velocitySensitivity: 10
 --- !u!114 &-5761390058969582534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,8 +720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b34d113e25e85468ba576bf5a0ea75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ikBoneRight: 0
-  _ikBoneLeft: 1
+  _ikBoneRight: 1
+  _ikBoneLeft: 0
   _animator: {fileID: 1577362923997759828}
   _rayCastMask:
     serializedVersion: 2

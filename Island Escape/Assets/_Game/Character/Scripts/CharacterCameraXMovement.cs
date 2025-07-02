@@ -7,6 +7,6 @@ public class CharacterCameraXMovement : MonoBehaviour
 
     private void Update()
     {
-        _cameraTransform.localEulerAngles = new Vector3(_characterMovement.Rotation.Value.x, 0, 0);
+        _cameraTransform.localEulerAngles = new Vector3(_characterMovement.RotationNet.Value.x, 0, 0);
     }
 }

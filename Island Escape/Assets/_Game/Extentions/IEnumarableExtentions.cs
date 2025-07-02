@@ -7,16 +7,17 @@ public static class IEnumerableExtensions
     /// <summary>
     /// Returns random element from collection
     /// </summary>
-    public static T GetRandom<T>(this IEnumerable<T> source)
+    public static T GetRandom<T>(this IEnumerable<T> source, Random random = null)
     {
         if (source == null) throw new ArgumentNullException(nameof(source));
+        random ??= new Random();
 
         var list = source as IList<T> ?? source.ToList();
 
         if (list.Count == 0)
             throw new InvalidOperationException("Коллекция пуста.");
 
-        int index = UnityEngine.Random.Range(0, list.Count);
+        int index = random.Next(0, list.Count);
         return list[index];
     }
 
