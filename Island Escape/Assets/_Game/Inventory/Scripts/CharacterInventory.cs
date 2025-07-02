@@ -122,6 +122,11 @@ public class CharacterInventory : NetEntity<CharacterInventory>
         {
             base.OnInspectorGUI();
 
+            if (Application.IsPlaying(target) == false)
+            {
+                return;
+            }
+            
             GUI.enabled = false;
             foreach (InventoryItemInstance item in target.Items)
             {

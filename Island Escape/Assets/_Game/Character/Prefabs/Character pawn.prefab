@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 844628027759738000}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.7, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -233,6 +233,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+  _jumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -2.8875787
+      outSlope: -2.8875787
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1150202
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.02456403
+      outSlope: -0.02456403
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07241064
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _characterContainer:
     mode: 0
     unityReference: {fileID: 7849517496505143883}
@@ -490,6 +514,8 @@ MonoBehaviour:
   _characterMovement: {fileID: 725780987519911875}
   _moveAction: {fileID: -1680190386980627800, guid: 59f3e3ca93c9f6041bfe9a85a85d4ae2, type: 3}
   _rotateAction: {fileID: -5630151704836100654, guid: 59f3e3ca93c9f6041bfe9a85a85d4ae2, type: 3}
+  _sprintAction: {fileID: -7471211009204490832, guid: 59f3e3ca93c9f6041bfe9a85a85d4ae2, type: 3}
+  _jumpAction: {fileID: -2099379676528639254, guid: 59f3e3ca93c9f6041bfe9a85a85d4ae2, type: 3}
 --- !u!114 &4807234550749573714
 MonoBehaviour:
   m_ObjectHideFlags: 0

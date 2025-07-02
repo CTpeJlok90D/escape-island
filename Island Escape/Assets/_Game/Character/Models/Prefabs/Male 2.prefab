@@ -2013,11 +2013,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f88b30baa76e044ab0480ee30957c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterController: {fileID: 6263314479846995793}
+  _characterInstance: {fileID: 6263314479846995793}
   _animator: {fileID: 2369712856585923573}
   _zMovementParametrName: Z Movement
   _xMovementParametrName: X Movement
   _moveSpeedParametrName: Move speed
+  _isGroundedParameterName: Is Grounded
 --- !u!114 &4804948432096897490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2101,7 +2102,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   _maxDistanceToGround: 0.1
-  _footOffcet: {x: 0, y: 0, z: 0}
+  _footOffcet: {x: 0, y: 0.15, z: 0}
 --- !u!1 &2369712856593308035
 GameObject:
   m_ObjectHideFlags: 0

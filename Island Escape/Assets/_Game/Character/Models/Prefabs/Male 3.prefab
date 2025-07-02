@@ -2534,6 +2534,8 @@ MonoBehaviour:
   _zMovementParametrName: Z Movement
   _xMovementParametrName: X Movement
   _moveSpeedParametrName: Move speed
+  _isGroundedParameterName: Is Grounded
+  _jumpedParameterName: Jumped
 --- !u!114 &1376977481358878202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2617,7 +2619,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   _maxDistanceToGround: 0.1
-  _footOffcet: {x: 0, y: 0, z: 0}
+  _footOffcet: {x: 0, y: 0.15, z: 0}
 --- !u!1 &6562031803846321548
 GameObject:
   m_ObjectHideFlags: 0

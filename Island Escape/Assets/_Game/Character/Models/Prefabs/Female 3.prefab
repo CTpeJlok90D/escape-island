@@ -1368,11 +1368,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f88b30baa76e044ab0480ee30957c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterController: {fileID: -3557693429533086705}
+  _characterInstance: {fileID: -3557693429533086705}
   _animator: {fileID: 329728464646693673}
   _zMovementParametrName: Z Movement
   _xMovementParametrName: X Movement
   _moveSpeedParametrName: Move speed
+  _isGroundedParameterName: Is Grounded
+  _jumpedParameterName: Jumped
 --- !u!114 &-2090104572290652440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1456,7 +1458,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   _maxDistanceToGround: 0.1
-  _footOffcet: {x: 0, y: 0, z: 0}
+  _footOffcet: {x: 0, y: 0.15, z: 0}
 --- !u!1 &329728464637169901
 GameObject:
   m_ObjectHideFlags: 0
