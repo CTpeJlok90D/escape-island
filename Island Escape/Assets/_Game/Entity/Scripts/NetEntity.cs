@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -24,17 +25,19 @@ namespace Core.Entities
             {
                 if (_instances.Count > 1)
                 {
-                    throw new InvalidOperationException($"{nameof(T)} exists more than once");
+                    throw new InvalidOperationException($"{typeof(T).Name} exists more than once");
                 }
                 
                 if (_instances.Count == 0)
                 {
-                    throw new InvalidOperationException($"{nameof(T)} do not exists");
+                    throw new InvalidOperationException($"Instances of {typeof(T).Name} do not exists");
                 }
                 
                 return _instances[0];
             }
         }
+
+        public static bool Exists => _instances.Any(); 
 
         public Guid EntityID { get; private set; }
         
